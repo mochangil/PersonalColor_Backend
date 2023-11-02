@@ -1,6 +1,7 @@
 package Mo.PersonalColorBackend.controller;
 
 import Mo.PersonalColorBackend.dto.BackgroundColorDto;
+import Mo.PersonalColorBackend.entity.BackgroundColor;
 import Mo.PersonalColorBackend.service.BackgroundColorService;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -23,7 +26,7 @@ public class BackgroundColorController {
         return backgroundColorService.save(backgroundColorDto);
     }
 
-    @PostMapping("/result")
+    @PostMapping("/find")
     public BackgroundColorDto findById(@RequestBody Long id){
         return backgroundColorService.findById(id);
     }
@@ -31,6 +34,11 @@ public class BackgroundColorController {
     @PostMapping("/update")
     public Long update(@RequestBody BackgroundColorDto backgroundColorDto){
         return backgroundColorService.update(backgroundColorDto);
+    }
+
+    @PostMapping("/result")
+    public List<BackgroundColorDto> findByPersonalColorId(@RequestBody Long id){
+        return backgroundColorService.findByPersonalColorId(id);
     }
 
 }
