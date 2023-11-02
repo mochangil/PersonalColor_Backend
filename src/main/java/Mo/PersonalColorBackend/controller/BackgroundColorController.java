@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -37,8 +38,8 @@ public class BackgroundColorController {
     }
 
     @PostMapping("/result")
-    public List<BackgroundColorDto> findByPersonalColorId(@RequestBody Long id){
-        return backgroundColorService.findByPersonalColorId(id);
+    public List<BackgroundColorDto> findByPersonalColorId(@RequestBody HashMap<String, Long> map){
+        return backgroundColorService.findByPersonalColorId(map.get("id"));
     }
 
 }

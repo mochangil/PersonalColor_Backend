@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Slf4j
@@ -33,7 +34,7 @@ public class FrameController {
     }
 
     @PostMapping("/result")
-    public List<FrameDto> findByPersonalColorId(@RequestBody Long id) {
-        return frameService.findByPersonalColorId(id);
+    public List<FrameDto> findByPersonalColorId(@RequestBody HashMap<String, Long> map) {
+        return frameService.findByPersonalColorId((map.get("id")));
     }
 }
