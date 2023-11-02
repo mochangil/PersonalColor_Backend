@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class FrameController {
     }
 
 
-    @PostMapping("/result")
+    @PostMapping("/find")
     public FrameDto findById(@RequestBody Long id){
         return frameService.findById(id);
     }
@@ -28,5 +30,10 @@ public class FrameController {
     @PostMapping("/update")
     public Long update(@RequestBody FrameDto frameDto){
         return frameService.update(frameDto);
+    }
+
+    @PostMapping("/result")
+    public List<FrameDto> findByPersonalColorId(@RequestBody Long id) {
+        return frameService.findByPersonalColorId(id);
     }
 }
