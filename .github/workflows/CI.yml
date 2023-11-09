@@ -5,8 +5,8 @@ on:
       - main
 env:
   S3_BUCKET_NAME:  personalcolor-backend-s3
-  CODE_DEPLOY_APPLICATION_NAME: personalcolor-backend-codedeploy //CodeDeploy생성시 어플리케이션명
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: personalcolor-backend-deploygroup //CodeDeploy를 생성후 어플리케이션 내부의 배포그룹명
+  CODE_DEPLOY_APPLICATION_NAME: personalcolor-backend-codedeploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: personalcolor-backend-deploygroup
 
 permissions:
   contents: read
