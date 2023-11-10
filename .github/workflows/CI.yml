@@ -5,8 +5,8 @@ on:
       - main
 env:
   S3_BUCKET_NAME:  personalcolor-backend-s3
-  CODE_DEPLOY_APPLICATION_NAME: personalcolor-backend-codedeploy
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: personalcolor-backend-deploygroup
+  CODE_DEPLOY_APPLICATION_NAME: personalcolor-app-backend-codedeploy
+  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: PersonalColor-GROUP
 
 permissions:
   contents: read
