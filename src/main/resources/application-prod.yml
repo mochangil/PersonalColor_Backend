@@ -2,15 +2,17 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://personalcolor-app-db.cdqyjzhvaqsv.ap-northeast-2.rds.amazonaws.com:3306/PSColor?useSSL=false&serverTimezone=Asia/Seoul
-    username: root
+    username: admin
     password: ahckddlf1234
 
   jpa:
+    database: mysql
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         format_sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
   logging:
     level:
