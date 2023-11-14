@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://personalcolor-app-db.cdqyjzhvaqsv.ap-northeast-2.rds.amazonaws.com:3306/PSColor?useSSL=false&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://personalcolor-app-db.cdqyjzhvaqsv.ap-northeast-2.rds.amazonaws.com:3306/PSColor?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
     username: admin
     password: ahckddlf1234
 
