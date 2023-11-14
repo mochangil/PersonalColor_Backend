@@ -13,19 +13,24 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.http.HttpHeaders.SET_COOKIE;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/faceAnalyze")
+@RequestMapping("/face")
 public class FaceAnalyzeController {
 
     //@PostMapping
-    @GetMapping
+    @GetMapping("/token")
     public ResponseEntity personalColorAnalyze( //@RequestBody String img,
                                                 HttpServletResponse response,
                                                 @CookieValue(value="personalColorId", required = false)Cookie cookie){
@@ -43,6 +48,38 @@ public class FaceAnalyzeController {
         }
 
 
+    }
+
+    @GetMapping("/analyze")
+    public String executePythonScript() throws IOException, InterruptedException {
+        //입력을 SRC S3 링크로, 다운후 저장.
+        List<String> command = new ArrayList<>();
+        //이미지를 일시적으로 다운후 지정하고, 삭제
+        String image_path = "../ML/personal/spring1.png";
+        String Python_path = "../ML/personal/src/main.py";
+        command.add("python3"); // 또는 "python3" 등의 적절한 명령어 사용
+        command.add(Python_path);
+        command.add("--image");
+        command.add(image_path);
+
+        ProcessBuilder builder = new ProcessBuilder(command);
+        Process process = builder.start();
+
+        // Python 스크립트의 출력을 읽음
+        BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        StringBuilder result = new StringBuilder();
+        String line;
+        while ((line = in.readLine()) != null) {
+            result.append(line);
+        }
+
+        System.out.println("python 실행 check");
+        // 프로세스가 끝날 때까지 기다림
+        process.waitFor();
+        in.close();
+        //0에서7
+        System.out.println(result.toString());
+        return result.toString();
     }
 
 }
