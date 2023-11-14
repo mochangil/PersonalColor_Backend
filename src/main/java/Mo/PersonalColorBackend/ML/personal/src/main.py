@@ -30,6 +30,12 @@ def main():
         for imgpath in imgs:
             print(os.path.join(dirpath, imgpath))
             personal_color.analysis(os.path.join(dirpath, imgpath))
+import resource
 
+# 현재 프로세스의 최대 메모리 사용량을 가져옵니다. (Unix/Linux)
 if __name__ == '__main__':
     main()
+    ### 아래는 메모리 사용량을 확인하는 코드
+    #memory_usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+
+    #print(f"Memory Usage: {memory_usage / 1024:.2f} MB")  # KB를 MB로 변환

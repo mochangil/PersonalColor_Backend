@@ -12,9 +12,9 @@ def is_warm(lab_b, a):
     '''
     # standard of skin, eyebrow, eye
     ##warm_b_std = [11.6518, 11.71445, 3.6484]
-    warm_b_std = [24.0518, 27.11445, 17.1484]
+    warm_b_std = [19.985, 15.05, 9.82267]
     ##cool_b_std = [4.64255, 4.86635, 0.18735]
-    cool_b_std = [9.64255, 7.86635, 12.18735]
+    cool_b_std = [17.46428, 13.57642, 11.52235]
 
     warm_dist = 0
     cool_dist = 0
@@ -41,9 +41,9 @@ def is_spr(hsv_s, a):
     '''
     #skin, hair, eye
     #spr_s_std = [18.59296, 30.30303, 25.80645]
-    spr_s_std = [20.59296, 32.30303, 29.80645]
+    spr_s_std = [17.83296, 15.40303, 10.49645]
     #fal_s_std = [27.13987, 39.75155, 37.5]
-    fal_s_std = [32.13987, 42.75155, 40.5]
+    fal_s_std = [21.83987, 14.75155, 9.5]
     spr_dist = 0
     fal_dist = 0
 
@@ -69,8 +69,8 @@ def is_smr(hsv_s, a):
     각각 계산하여 summer가 가까우면 1, 반대 경우 0 리턴
     '''
     #skin, eyebrow, eye
-    smr_s_std = [12.5, 21.7195, 24.77064]
-    wnt_s_std = [16.73913, 24.8276, 31.3726]
+    smr_s_std = [20.5, 13.9195, 11.77064]
+    wnt_s_std = [14.43913, 13.2276, 11.9326]
     a[1] = 0.5 # eyebrow 영향력 적기 때문에 가중치 줄임
 
     smr_dist = 0
@@ -96,7 +96,7 @@ def is_smr(hsv_s, a):
 
 
 
-def is_warm_light(lab_b, a):#웜 라이트 브라이트 구분
+def is_spr_light(lab_b, a):#웜 라이트 브라이트 구분
     '''
     파라미터 lab_b = [skin_b, hair_b, eye_b]
     a = 가중치 [skin, hair, eye]
@@ -105,22 +105,22 @@ def is_warm_light(lab_b, a):#웜 라이트 브라이트 구분
     '''
     # standard of skin, eyebrow, eye
     ##warm_b_std = [11.6518, 11.71445, 3.6484]
-    warm_light_std = [24.0518, 27.11445, 17.1484]
+    spr_light_std = [17.2018, 16.01045, 10.89484]
     ##cool_b_std = [4.64255, 4.86635, 0.18735]
-    warm_blight_std = [9.64255, 7.86635, 12.18735]
+    spr_blight_std = [18.64255, 14.6635, 9.98735]
 
-    warm_light_dist = 0
-    warm_blight_dist = 0
+    spr_light_dist = 0
+    spr_blight_dist = 0
 
     body_part = ['skin', 'eyebrow', 'eye']
     for i in range(3):
-        warm_light_dist += abs(lab_b[i] - warm_light_std[i]) * a[i]
+        spr_light_dist += abs(lab_b[i] - spr_light_std[i]) * a[i]
         #print(body_part[i],"의 warm 기준값과의 거리")
         #print(abs(lab_b[i] - warm_b_std[i]))
-        warm_blight_dist += abs(lab_b[i] - warm_blight_std[i]) * a[i]
+        spr_blight_dist += abs(lab_b[i] - spr_blight_std[i]) * a[i]
         #print(body_part[i],"의 cool 기준값과의 거리")
         #print(abs(lab_b[i] - cool_b_std[i]))
-    if(warm_light_dist <= warm_blight_dist):
+    if(spr_light_dist <= spr_blight_dist):
         return 1 #warm
     else:
         return 0 #cool
@@ -136,9 +136,9 @@ def is_summer_light(lab_b, a):#웜 라이트 브라이트 구분
     '''
     # standard of skin, eyebrow, eye
     ##warm_b_std = [11.6518, 11.71445, 3.6484]
-    summer_light_std = [24.0518, 27.11445, 17.1484]
+    summer_light_std = [18.5518, 17.791445, 13.605484]
     ##cool_b_std = [4.64255, 4.86635, 0.18735]
-    summer_mute_std = [9.64255, 7.86635, 12.18735]
+    summer_mute_std = [21.14255, 12.86635, 10.18735]
 
     summer_light_dist = 0
     summer_mute_dist = 0
@@ -167,9 +167,9 @@ def is_fall_mute(lab_b, a):#웜 라이트 브라이트 구분
     '''
     # standard of skin, eyebrow, eye
     ##warm_b_std = [11.6518, 11.71445, 3.6484]
-    fall_mute_std = [24.0518, 27.11445, 17.1484]
+    fall_mute_std = [22.42518, 14.001445, 9.0084]
     ##cool_b_std = [4.64255, 4.86635, 0.18735]
-    fall_dark_std = [9.64255, 7.86635, 12.18735]
+    fall_dark_std = [21.67255, 14.948635, 9.29735]
 
     fall_mute_dist = 0
     fall_dark_dist = 0
@@ -197,9 +197,9 @@ def is_winter_blight(lab_b, a):#웜 라이트 브라이트 구분
     '''
     # standard of skin, eyebrow, eye
     ##warm_b_std = [11.6518, 11.71445, 3.6484]
-    winter_blight_std = [24.0518, 27.11445, 17.1484]
+    winter_blight_std = [16.37518, 12.75445, 10.840484]
     ##cool_b_std = [4.64255, 4.86635, 0.18735]
-    winter_dark_std = [9.64255, 7.86635, 12.18735]
+    winter_dark_std = [11.99255, 13.86635, 13.403735]
 
     winter_blight_dist = 0
     winter_dark_dist = 0

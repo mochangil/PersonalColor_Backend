@@ -37,7 +37,7 @@ def analysis(imgpath):
         hsv = convert_color(rgb, HSVColor, through_rgb_type=sRGBColor)
         Lab_b.append(float(format(lab.lab_b,".2f")))
         hsv_s.append(float(format(hsv.hsv_s,".2f"))*100)
-    f = open("/home/eugene131/personal/LAB_chek.txt", "a")
+    f = open("./../LAB_chek.txt", "a")
     f.write('{}\{}\t{}\t{}'.format(imgpath, Lab_b[0],Lab_b[1],Lab_b[2])+"\n")
     #print('{}\{}'.format(imgpath, Lab_b))
     #print('Lab_b[skin, eyebrow, eye]',Lab_b)
@@ -88,12 +88,12 @@ def analysis(imgpath):
         print("4")
     if '가을웜다크' in tone:
         print("5")
-    if '겨울브라이트' in tone:
+    if '겨울쿨브라이트' in tone:
         print("6")
-    if '겨울다크' in tone:
+    if '겨울쿨다크' in tone:
         print("7")
-            
+    print(tone)
     #print(tone)
-    f=open("/home/eugene131/personal/out.txt","a")
+    f=open("./../out.txt","a")
     f.write('{}의 퍼스널 컬러는 {}입니다.\n'.format(imgpath, tone))
     f.close()
