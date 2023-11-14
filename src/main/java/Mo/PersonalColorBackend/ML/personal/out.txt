@@ -37,3 +37,5 @@ test_face30	11.45	9.15	12.35
 /home/eugene131/personal/spring1.png의 퍼스널 컬러는 겨울쿨톤(winter)입니다.
 /home/eugene131/personal/spring1.png의 퍼스널 컬러는 겨울쿨톤(winter)입니다.
 /home/eugene131/personal/spring1.png의 퍼스널 컬러는 겨울쿨톤(winter)입니다.
+/home/eugene131/personal/test_face/test_face1.jpg의 퍼스널 컬러는 겨울쿨다크(winter)입니다.
+/home/eugene131/personal/test_face/test_face1.jpg의 퍼스널 컬러는 겨울쿨다크(winter)입니다.
