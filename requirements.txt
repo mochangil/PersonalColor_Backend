@@ -1,0 +1,9 @@
+pip install opencv-python
+pip install numpy
+pip install dlib
+pip install matplotlib
+pip install scikit-learn
+pip install scikit-image
+pip install colormath
+pip install scipy
+pip install imutils
