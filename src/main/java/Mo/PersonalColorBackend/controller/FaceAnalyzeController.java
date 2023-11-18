@@ -51,48 +51,13 @@ public class FaceAnalyzeController {
 
     }
 
-    @GetMapping("/apiTest")
-    public String runPythonScript() throws IOException, InterruptedException {
-        ProcessBuilder processBuilder = new ProcessBuilder("python", "C:\\moo\\main2.py");
-        try {
-            Process process = processBuilder.start();
-
-            // 읽기 버퍼 설정
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder output = new StringBuilder();
-
-            // 스트림에서 출력 읽기
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-
-            // 프로세스가 완료될 때까지 대기
-            int exitCode = process.waitFor();
-
-            if (exitCode == 0) {
-                System.out.println(output.toString());
-                return "Python 스크립트 실행 성공. 출력:\n" + output.toString();
-            } else {
-                System.out.println(output.toString());
-                return "Python 스크립트 실행 중 오류 발생. 출력:\n" + output.toString();
-            }
-
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            return "오류 발생: " + e.getMessage();
-        }
-
-
-    }
-
     @GetMapping("/analyze2")
     @Async
     public String executePythonScript2() throws IOException, InterruptedException{
         String image_path = "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/spring1.png";
 //        String image_path = "C:\\moo\\main2.py";
         String python_path = "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/main.py";
-        ProcessBuilder processBuilder = new ProcessBuilder("python",python_path,"--image",image_path);
+        ProcessBuilder processBuilder = new ProcessBuilder("python3",python_path,"--image",image_path);
         try {
             Process process = processBuilder.start();
 
