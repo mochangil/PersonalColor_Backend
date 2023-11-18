@@ -95,5 +95,5 @@ def analysis(imgpath):
     print(tone)
     #print(tone)
     f=open("./../out.txt","a")
-    f.write('{}의 퍼스널 컬러는 {}입니다.\n'.format(imgpath, tone))
+#     f.write('{}의 퍼스널 컬러는 {}입니다.\n'.format(imgpath, tone))
     f.close()

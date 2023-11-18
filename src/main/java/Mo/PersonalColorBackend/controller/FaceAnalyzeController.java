@@ -1,6 +1,7 @@
 package Mo.PersonalColorBackend.controller;
 
 
+import Mo.PersonalColorBackend.service.FaceAnalyzeService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -30,6 +31,8 @@ import static org.springframework.http.HttpHeaders.SET_COOKIE;
 @RequestMapping("/face")
 public class FaceAnalyzeController {
 
+    private final FaceAnalyzeService faceAnalyzeService;
+
     //@PostMapping
     @GetMapping("/token")
     public ResponseEntity personalColorAnalyze( //@RequestBody String img,
@@ -55,7 +58,6 @@ public class FaceAnalyzeController {
     @Async
     public String executePythonScript2() throws IOException, InterruptedException{
         String image_path = "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/spring1.png";
-//        String image_path = "C:\\moo\\main2.py";
         String python_path = "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/main.py";
         ProcessBuilder processBuilder = new ProcessBuilder("python3",python_path,"--image",image_path);
         try {
@@ -86,36 +88,16 @@ public class FaceAnalyzeController {
         }
     }
 
-    @GetMapping("/analyze")
-    public String executePythonScript() throws IOException, InterruptedException {
-        //입력을 SRC S3 링크로, 다운후 저장.
-        List<String> command = new ArrayList<>();
-        //이미지를 일시적으로 다운후 지정하고, 삭제
-        String image_path = "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/spring1.png";
-        String Python_path = "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/main.py";
-        command.add("python3"); // 또는 "python3" 등의 적절한 명령어 사용
-        command.add(Python_path);
-        command.add("--image");
-        command.add(image_path);
-
-        ProcessBuilder builder = new ProcessBuilder(command);
-        Process process = builder.start();
-
-        // Python 스크립트의 출력을 읽음
-        BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));        StringBuilder result = new StringBuilder();
-        String line;
-        while ((line = in.readLine()) != null) {
-            result.append(line);
+    @Async
+    @PostMapping("/analyze")
+    public String faceAnalyze(@RequestBody String url) {
+        try {
+            String image_path = faceAnalyzeService.getImageUrl(url);
+            faceAnalyzeService.deleteImage(image_path);
+            return faceAnalyzeService.runAnalyzePython(image_path);
+        }catch (IOException | InterruptedException e){
+            return e.getMessage();
         }
-
-        System.out.println("python 실행 check");
-        // 프로세스가 끝날 때까지 기다림
-        process.waitFor();
-        System.out.println("python check 1");
-        in.close();
-        //0에서7
-        System.out.println(result.toString());
-        return result.toString();
     }
 
 }
