@@ -1,3 +1,25 @@
+cloud:
+    aws:
+        credentials:
+            instance-profile: false
+            access-key: AKIARRXD2RHLEN3VCZV2
+            secret-key: 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
+        region:
+            auto: false
+            static: ap-northeast-2
+        stack:
+            auto: false
+
+logging:
+    level:
+        com:
+            amazonaws:
+                util:
+                    EC2MetadataUtils: error
+
+aws:
+    s3:
+        bucket: personalcolor-thumbnail-s3
 
 
 spring:
