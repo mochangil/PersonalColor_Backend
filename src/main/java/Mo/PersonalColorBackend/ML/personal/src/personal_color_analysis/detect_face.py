@@ -12,7 +12,7 @@ class DetectFace:
         # and then create the facial landmark predictor
         self.detector = dlib.get_frontal_face_detector()
         #self.predictor = dlib.shape_predictor('../res/shape_predictor_68_face_landmarks.dat')
-        self.predictor = dlib.shape_predictor('/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/res/shape_predictor_68_face_landmarks.dat')
+        self.predictor = dlib.shape_predictor('/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/res/shape_predictor_68_face_landmarks.dat')
         #face detection part
         self.img = cv2.imread(image)
         #if self.img.shape[0]>500:
