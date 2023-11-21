@@ -90,7 +90,7 @@ public class FaceAnalyzeController {
 
     @Async
     @PostMapping("/analyze")
-    public String faceAnalyze(@RequestBody String url) {
+    public String faceAnalyze(@RequestParam String url) {
         try {
             String image_path = faceAnalyzeService.getImageUrl(url);
             faceAnalyzeService.deleteImage(image_path);
