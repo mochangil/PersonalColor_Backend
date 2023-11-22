@@ -90,6 +90,7 @@ public class FaceAnalyzeController {
 
     @Async
     @PostMapping("/analyze")
+
     public String faceAnalyze(@RequestParam("url") String url) {
         try {
             System.out.println(url);
