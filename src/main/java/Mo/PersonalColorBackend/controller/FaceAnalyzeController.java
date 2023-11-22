@@ -90,8 +90,10 @@ public class FaceAnalyzeController {
 
     @Async
     @PostMapping("/analyze")
-    public String faceAnalyze(@RequestParam String url) {
+
+    public String faceAnalyze(@RequestParam("url") String url) {
         try {
+            System.out.println(url);
             String image_path = faceAnalyzeService.getImageUrl(url);
             faceAnalyzeService.deleteImage(image_path);
             return faceAnalyzeService.runAnalyzePython(image_path);
