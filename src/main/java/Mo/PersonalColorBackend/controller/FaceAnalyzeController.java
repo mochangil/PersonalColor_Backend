@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.springframework.http.HttpHeaders.SET_COOKIE;
@@ -90,8 +91,9 @@ public class FaceAnalyzeController {
 
     @Async
     @PostMapping("/analyze")
-    public String faceAnalyze(@RequestParam("url") String url) {
+    public String faceAnalyze(@RequestBody HashMap<String, String> query) {
         try {
+            String url = query.get("url");
             System.out.println(url);
             String image_path = faceAnalyzeService.getImageUrl(url);
             faceAnalyzeService.deleteImage(image_path);
