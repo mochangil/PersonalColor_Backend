@@ -92,7 +92,7 @@ def analysis(imgpath):
         print("6")
     if '겨울쿨다크' in tone:
         print("7")
-    print(tone)
+#     print(tone)
     #print(tone)
     f=open("./../out.txt","a")
 #     f.write('{}의 퍼스널 컬러는 {}입니다.\n'.format(imgpath, tone))
