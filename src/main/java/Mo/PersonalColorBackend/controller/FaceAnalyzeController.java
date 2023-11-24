@@ -98,7 +98,7 @@ public class FaceAnalyzeController {
             String image_path = faceAnalyzeService.getImageUrl(url);
             String res = faceAnalyzeService.runAnalyzePython(image_path);
             faceAnalyzeService.deleteImage(image_path);
-            return res;
+            return res.substring(0,1);
         }catch (IOException | InterruptedException e){
             return e.getMessage();
         }
