@@ -12,9 +12,9 @@ def is_warm(lab_b, a):
     '''
     # standard of skin, eyebrow, eye
     ##warm_b_std = [11.6518, 11.71445, 3.6484]
-    warm_b_std = [19.985, 15.05, 9.82267]
+    warm_b_std = [19.47125, 15.93125, 9.8575]
     ##cool_b_std = [4.64255, 4.86635, 0.18735]
-    cool_b_std = [17.46428, 13.57642, 11.52235]
+    cool_b_std = [18.585, 13.00625, 8.73]
 
     warm_dist = 0
     cool_dist = 0

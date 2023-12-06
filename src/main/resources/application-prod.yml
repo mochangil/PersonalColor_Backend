@@ -17,3 +17,9 @@ spring:
     level:
       org.hibernate.SQL: debug
       org.hibernate.type: trace
+
+process-uri:
+  image-path : "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/"
+  python-path : "/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/main.py"
+
+
