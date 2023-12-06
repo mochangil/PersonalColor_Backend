@@ -6,6 +6,10 @@ from personal_color_analysis.color_extract import DominantColors
 from colormath.color_objects import LabColor, sRGBColor, HSVColor
 from colormath.color_conversions import convert_color
 
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+import numpy as np
+
 def analysis(imgpath):
     #######################################
     #           Face detection            #
@@ -47,6 +51,21 @@ def analysis(imgpath):
     #######################################
     Lab_weight = [30, 20, 5]
     hsv_weight = [10, 1, 1]
+    import pickle
+
+# 저장된 모델 불러오기
+    #with open('/home/eugene131/personal/src/personal_color_analysis/random_forest_model.pkl', 'rb') as file:
+    #    model = pickle.load(file)
+    from joblib import load
+    # 저장된 모델 불러오기
+    model = load('/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/personal_color_analysis/test.joblib')
+    
+    pr_c = model.predict([Lab_b])
+    print(pr_c[0])
+#     f = open("./../out.txt","a")
+#     f.write('{}\t{}\n'.format(imgpath.split('/')[len(imgpath.split('/'))-1], pr_c[0]))
+#     f.close()
+'''
     if(tone_analysis.is_warm(Lab_b, Lab_weight)):
         if(tone_analysis.is_spr(hsv_s, hsv_weight)):
             #봄웜톤 일때
@@ -92,8 +111,4 @@ def analysis(imgpath):
         print("6")
     if '겨울쿨다크' in tone:
         print("7")
-#     print(tone)
-    #print(tone)
-    f=open("./../out.txt","a")
-#     f.write('{}의 퍼스널 컬러는 {}입니다.\n'.format(imgpath, tone))
-    f.close()
+'''

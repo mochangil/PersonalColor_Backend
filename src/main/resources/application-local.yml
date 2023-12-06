@@ -17,3 +17,7 @@ spring:
     level:
       org.hibernate.SQL: debug
       org.hibernate.type: trace
+
+process-uri:
+  image-path : "C:\moo\PersonalColorBackend\PersonalColorBackend\src\main\java\Mo\PersonalColorBackend\ML\personal\\"
+  python-path : "C:\moo\PersonalColorBackend\PersonalColorBackend\src\main\java\Mo\PersonalColorBackend\ML\personal\src\main.py"
