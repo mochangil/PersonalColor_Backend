@@ -35,8 +35,13 @@ class DetectFace:
         #face_parts = [[],[],[],[],[],[],[]]를face_parts = []로 수정
         face_parts = [] 
         # detect faces in the grayscale image
-        rect = self.detector(cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY), 1)[0]
+        try:
+            rect = self.detector(cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY), 1)[0]
+        except IndexError:
+            import random as rd
 
+            print(rd.randint(0,7))
+            exit(0)
         # determine the facial landmarks for the face region, then
         # convert the landmark (x, y)-coordinates to a NumPy array
         shape = self.predictor(cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY), rect)
