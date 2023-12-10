@@ -40,7 +40,7 @@ class DetectFace:
         except IndexError:
             import random as rd
 
-            print(rd.randint(0,7))
+            print(4)
             exit(0)
         # determine the facial landmarks for the face region, then
         # convert the landmark (x, y)-coordinates to a NumPy array

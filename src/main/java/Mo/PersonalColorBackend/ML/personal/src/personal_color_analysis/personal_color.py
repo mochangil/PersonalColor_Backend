@@ -58,7 +58,7 @@ def analysis(imgpath):
     #    model = pickle.load(file)
     from joblib import load
     # 저장된 모델 불러오기
-    model = load('/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/personal_color_analysis/test.joblib')
+    model = load('/home/ubuntu/app/src/main/java/Mo/PersonalColorBackend/ML/personal/src/personal_color_analysis/fix_pers.joblib')
     
     pr_c = model.predict([Lab_b])
     print(pr_c[0])
